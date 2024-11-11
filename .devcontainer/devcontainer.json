@@ -2,5 +2,12 @@
     "name": "diagrams-devcontainer",
     "build": {
       "dockerfile": "./.ContainerFile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python"
+            ]
+        }
     }
 }
