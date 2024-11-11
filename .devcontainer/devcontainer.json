@@ -1,0 +1,6 @@
+{
+    "name": "diagrams-devcontainer",
+    "build": {
+      "dockerfile": "./.ContainerFile"
+    }
+}
