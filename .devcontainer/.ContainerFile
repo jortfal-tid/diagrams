@@ -13,6 +13,7 @@ RUN \
   unzip \
   vim \
   git \
-  python3-pip
+  python3-pip \
+  graphviz
 
 RUN pip3 install diagrams
