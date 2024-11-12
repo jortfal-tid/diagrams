@@ -1,8 +1,6 @@
 from diagrams import Cluster, Diagram
 
 from diagrams.k8s.infra import Node
-from diagrams.k8s.storage import PV
-from diagrams.k8s.compute import Pod
 
 from diagrams.azure.compute import KubernetesServices
 
@@ -10,7 +8,7 @@ from diagrams.onprem.monitoring import Prometheus
 from diagrams.elastic.elasticsearch import Elasticsearch
 from diagrams.custom import Custom
 
-with Diagram("Monitoring and observability System Infrastructure Architecture", direction="TB", show=False):
+with Diagram("Infrastructure Architecture >> Monitoring and Observability System", direction="TB", filename="mon_and_obs_infrastucture", show=False):
 
     with Cluster("Control Plane"):
       aks = KubernetesServices("AKS")
@@ -62,14 +60,14 @@ with Diagram("Monitoring and observability System Infrastructure Architecture", 
 
     with Cluster("Node Pool AI"):
 
-      node_pool_a = Custom("Standard_NC16as_T4_v3", "./assets/img/ai-logo.png")
+      node_pool_ai = Custom("Standard_NC16as_T4_v3", "./assets/img/ai-logo.png")
 
-      node_a01 = Node("Node A01")
-      node_a02 = Node("Node A02")
-      node_a03 = Node("Node A03")
+      node_ai01 = Node("Node AI01")
+      node_ai02 = Node("Node AI02")
+      node_ai03 = Node("Node AI03")
 
-      node_pool_a >> [node_a01, node_a02, node_a03]
+      node_pool_ai >> [node_ai01, node_ai02, node_ai03]
     
-    # AKS
-    aks >> [node_pool_s, node_pool_m, node_pool_l, node_pool_t, node_pool_a]
+    # Cluster
+    aks >> [node_pool_s, node_pool_m, node_pool_l, node_pool_t, node_pool_ai]
     

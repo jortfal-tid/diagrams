@@ -12,20 +12,20 @@ from diagrams.onprem.monitoring import Grafana
 
 from diagrams.azure.general import Helpsupport
 
-with Diagram("Monitoring Metrics System Infrastructure Architecture", show=False):
+with Diagram("Infrastructure Architecture >> Monitoring Metrics System", filename="mon_and_obs_infrastucture_metrics", show=False):
 
     with Cluster("Control Plane"):
       aks = KubernetesServices("AKS")
 
-    with Cluster("Node Pool"):
+    with Cluster("Node Pool Metrics"):
       
-      node_m01 = Node("Node M01")
-      node_m02 = Node("Node M02")
-      node_m03 = Node("Node M03")
+      node_m01 = Node("NODE M01")
+      node_m02 = Node("NODE M02")
+      node_m03 = Node("NODE M03")
       nodes_m = [node_m01, node_m02, node_m03]
 
     with Cluster("NODE M01 | Standard_B4s_v2 | Rafagas"):
-      aks_node_m01            = KubernetesServices("Node M01​")
+      aks_node_m01           = KubernetesServices("Node M01​")
       ssd_01                 = PV("SSD")
       k8s_metrics_01         = Pod("kube-state-metrics")
       prometheus_exporter_01 = Pod("prometheus-node-exporter")
