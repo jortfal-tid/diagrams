@@ -12,7 +12,7 @@ from diagrams.onprem.monitoring import Grafana
 
 from diagrams.azure.general import Helpsupport
 
-with Diagram("Infrastructure Architecture >> Monitoring Metrics System", filename="mon_and_obs_infrastucture_metrics", show=False):
+with Diagram("Infrastructure Architecture >> Monitoring Metrics System", direction="LR", filename="mon_and_obs_infrastucture_metrics", show=False):
 
     with Cluster("Control Plane"):
       aks = KubernetesServices("AKS")

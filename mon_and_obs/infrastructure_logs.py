@@ -51,11 +51,6 @@ with Diagram("Infrastructure Architecture >> Monitoring Logs System", direction=
     fluentbit = Fluentd("Fluentbit")
     users     = Helpsupport()
 
-    # Logs
-    Custom("APPs", "./assets/img/apps-logo.png") >> fluentbit 
-    Rack("Systems") >> fluentbit 
-    fluentbit >> [elasticsearch_01, elasticsearch_02, elasticsearch_03]
-
     # Cluster
     aks >> nodes_m
 
@@ -71,5 +66,10 @@ with Diagram("Infrastructure Architecture >> Monitoring Logs System", direction=
     node_l03 >> aks_node_l03
     az_storage_account_03 << elasticsearch_03 << Kibana_03
     
+    # Logs Collector
+    Custom("APPs", "./assets/img/apps-logo.png") >> fluentbit 
+    Rack("Systems") >> fluentbit 
+    fluentbit >> [elasticsearch_01, elasticsearch_02, elasticsearch_03]
+
     # Helpsupport
     [Kibana_01, Kibana_02, Kibana_03] << users
